@@ -6,9 +6,9 @@ from sklearn.preprocessing import LabelEncoder
 from sklearn.model_selection import train_test_split
 import joblib
 import os
-
+if __name__ == "__main__":
 # ===== 1. Create dummy CSV if missing =====
-if not os.path.exists("transactions.csv"):
+   if not os.path.exists("transactions.csv"):
     np.random.seed(42)
     df_dummy = pd.DataFrame({
         "merchant": np.random.choice(["Amazon", "Walmart", "Target"], size=200),
@@ -48,3 +48,4 @@ print("✅ encoded_test_features.xlsx saved.")
 # ===== 9. Quick accuracy check =====
 acc = model.score(X_test, y_test)
 print(f"📊 Model accuracy: {acc:.2%}")
+
