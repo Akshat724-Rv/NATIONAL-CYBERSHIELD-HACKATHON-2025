@@ -1,0 +1,11 @@
+TransactionID,Merchant,Amount,City,Time
+TX001,Flipkart,1200,Bangalore,2025-08-30 10:15
+TX002,Amazon,999,Delhi,2025-08-30 10:20
+TX003,Paytm,5000,Mumbai,2025-08-30 10:25
+TX004,Zomato,300,Chennai,2025-08-30 10:30
+TX005,Swiggy,4500,Kolkata,2025-08-30 10:35
+TX006,Flipkart,7000,Bangalore,2025-08-30 10:40
+TX007,Amazon,150,Delhi,2025-08-30 10:45
+TX008,Paytm,6200,Mumbai,2025-08-30 10:50
+TX009,Zomato,250,Chennai,2025-08-30 10:55
+TX010,Swiggy,4800,Kolkata,2025-08-30 11:00

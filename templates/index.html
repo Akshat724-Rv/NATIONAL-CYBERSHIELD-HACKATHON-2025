@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>FraudShield AI – Upload Transactions</title>
+<style>
+    body {
+        font-family: 'Segoe UI', sans-serif;
+        background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+        color: #fff;
+        margin: 0;
+        padding: 0;
+    }
+    h1 {
+        text-align: center;
+        padding: 30px 10px 10px;
+        font-size: 2.5rem;
+        letter-spacing: 1px;
+    }
+    h1 span {
+        color: #00d5ff89;
+    }
+    p.tagline {
+        text-align: center;
+        font-size: 1rem;
+        color: #ccccccdd;
+        margin-bottom: 32px;
+    }
+    form {
+        max-width: 505px;
+        margin: auto;
+        background: rgba(255, 255, 255, 0.05);
+        padding: 25px;
+        border-radius: 12px;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+        backdrop-filter: blur(6px);
+        animation: fadeIn 0.8s ease-in-out;
+    }
+    label {
+        display: block;
+        margin-top: 15px;
+        font-weight: bold;
+        color: #00d4ff;
+    }
+    select, input[type="file"], input[type="range"] {
+        width: 100%;
+        padding: 10px;
+        margin-top: 5px;
+        border-radius: 6px;
+        border: none;
+        outline: none;
+        font-size: 0.95rem;
+    }
+    select, input[type="file"] {
+        background: rgba(255,255,255,0.9);
+        color: #000;
+    }
+
+    /* ===== Scoped Slider Styling (only affects #threshold) ===== */
+    #threshold {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        background: transparent;
+        width: 100%;
+        cursor: pointer;
+    }
+    /* Track */
+    #threshold::-webkit-slider-runnable-track {
+        height: 8px;
+        background: linear-gradient(90deg, #171313, #4dff88);
+        border-radius: 4px;
+    }
+    #threshold::-moz-range-track {
+        height: 8px;
+        background: linear-gradient(90deg, #171313, #4dff88);
+        border-radius: 4px;
+    }
+    /* Thumb */
+    #threshold::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        height: 18px;
+        width: 18px;
+        background: #00d4ff;
+        border-radius: 50%;
+        margin-top: -5px; /* center on track */
+        box-shadow: 0 0 5px rgba(0,0,0,0.5);
+        transition: transform 0.2s ease;
+        cursor: pointer;
+    }
+    #threshold::-webkit-slider-thumb:hover {
+        transform: scale(1.1);
+    }
+    #threshold::-moz-range-thumb {
+        height: 18px;
+        width: 18px;
+        background: #00d4ff;
+        border-radius: 50%;
+        border: none;
+        box-shadow: 0 0 5px rgba(0,0,0,0.5);
+        transition: transform 0.2s ease;
+        cursor: pointer;
+    }
+    #threshold::-moz-range-thumb:hover {
+        transform: scale(1.1);
+    }
+
+    button {
+        width: 100%;
+        padding: 12px;
+        margin-top: 20px;
+        background: linear-gradient(90deg, #00d4ff, #007bff);
+        border: none;
+        border-radius: 6px;
+        color: #fff;
+        font-size: 1.1rem;
+        cursor: pointer;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+    }
+    #threshold-value {
+        font-weight: normal;
+        color: #fff;
+    }
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+</style>
+</head>
+<body>
+
+<h1><span>FraudShield AI</span> – Transaction Fraud Detector</h1>
+<p class="tagline">Upload your data, set your risk threshold, and let our AI model do the rest.</p>
+
+<form action="/predict" method="post" enctype="multipart/form-data">
+    <label for="merchant">Merchant</label>
+    <select name="merchant" id="merchant" required>
+        <option value="">-- Select Merchant --</option>
+        {% for m in merchants %}
+        <option value="{{ m }}">{{ m }}</option>
+        {% endfor %}
+    </select>
+
+    <label for="csv_file">CSV File</label>
+    <input type="file" name="csv_file" id="csv_file" accept=".csv" required>
+
+    <label for="threshold">
+        Fraud Probability Threshold: <span id="threshold-value">0.50</span>
+    </label>
+    <input type="range" id="threshold" name="threshold" min="0" max="1" step="0.01" value="0.5">
+
+    <button type="submit">🚀 Run Prediction</button>
+</form>
+
+<script>
+    const slider = document.getElementById('threshold');
+    const valueDisplay = document.getElementById('threshold-value');
+    slider.addEventListener('input', () => {
+        valueDisplay.textContent = parseFloat(slider.value).toFixed(2);
+    });
+</script>
+
+</body>
+</html>

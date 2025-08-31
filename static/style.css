@@ -1,0 +1,101 @@
+body {
+  background-color: #f0f2f5;
+}
+
+.navbar-brand {
+  font-weight: bold;
+}
+
+.card {
+  border: none;
+}
+
+.card-header {
+  border-bottom: 1px solid #e9ecef;
+}
+
+.form-control-file {
+  border: 1px solid #ced4da;
+  border-radius: .25rem;
+  padding: .375rem .75rem;
+  width: 100%;
+}
+
+.data thead th {
+  background-color: #007bff;
+  color: #fff;
+  text-align: center;
+}
+
+.data {
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.data tbody tr.table-success td {
+  background-color: #d4edda !important;
+}
+
+.data tbody tr.table-danger td {
+  background-color: #f8d7da !important;
+}
+
+/* ===== Custom Cross-Browser Slider Styling ===== */
+
+/* Reset default styles */
+input[type="range"] {
+  -webkit-appearance: none; /* Chrome, Safari, Edge */
+  -moz-appearance: none;    /* Firefox */
+  appearance: none;
+  background: transparent;
+  width: 100%;
+  cursor: pointer;
+}
+
+/* Track styling - WebKit browsers */
+input[type="range"]::-webkit-slider-runnable-track {
+  height: 8px;
+  background: linear-gradient(90deg, #ff4d4d, #4dff88);
+  border-radius: 4px;
+}
+
+/* Track styling - Firefox */
+input[type="range"]::-moz-range-track {
+  height: 8px;
+  background: linear-gradient(90deg, #ff4d4d, #4dff88);
+  border-radius: 4px;
+}
+
+/* Thumb styling - WebKit browsers */
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 18px;
+  width: 18px;
+  background: #00d4ff;
+  border-radius: 50%;
+  margin-top: -5px; /* centers thumb on track */
+  box-shadow: 0 0 5px rgba(0,0,0,0.5);
+  transition: transform 0.2s ease;
+}
+input[type="range"]::-webkit-slider-thumb:hover {
+  transform: scale(1.1);
+}
+
+/* Thumb styling - Firefox */
+input[type="range"]::-moz-range-thumb {
+  height: 18px;
+  width: 18px;
+  background: #00d4ff;
+  border-radius: 50%;
+  border: none;
+  box-shadow: 0 0 5px rgba(0,0,0,0.5);
+  transition: transform 0.2s ease;
+}
+input[type="range"]::-moz-range-thumb:hover {
+  transform: scale(1.1);
+}
+
+/* Focus outline removal */
+input[type="range"]:focus {
+  outline: none;
+}
